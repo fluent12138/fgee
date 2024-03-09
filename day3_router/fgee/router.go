@@ -20,6 +20,7 @@ func newRouter() *router {
 	}
 }
 
+// 解析路径
 func parsePattern(pattern string) []string {
 	vs := strings.Split(pattern, "/")
 	parts := make([]string, 0)

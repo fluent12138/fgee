@@ -8,7 +8,7 @@ type node struct {
 	pattern  string  // 待匹配路由, 例如 /p/:lang (会在路由创建的时候保存在最后一个节点)
 	part     string  // 路由中的一部分, 例如 :lang
 	children []*node // 子节点, 构建树, 例如[doc, r, intro]
-	isWild   bool    // 是否精准匹配, part含有 : 或 * 为true
+	isWild   bool    // 是否模糊匹配, part含有 : 或 * 为true
 }
 
 // 插入
@@ -68,7 +68,7 @@ func (n *node) matchChilds(part string) []*node {
 	return nodes
 }
 
-// 获取当前字符串是否为精准匹配
+// 获取当前字符串是否为模糊匹配
 func getWild(part string) bool {
 	return part[0] == ':' || part[0] == '*'
 }
